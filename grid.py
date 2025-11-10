@@ -16,7 +16,7 @@ class VaporwaveGrid(QWidget):
         self.timer.start(60)  # atualiza a cada 60ms (~16 FPS)
 
     def animate(self):
-        self.offset += 4
+        self.offset += 3
         if self.offset >= 60:  # reseta o movimento pra dar loop
             self.offset = 0
         self.update()
@@ -27,7 +27,7 @@ class VaporwaveGrid(QWidget):
 
         width = self.width()
         height = self.height()
-        horizon_y = height // 2 + 100  # posição do horizonte
+        horizon_y = height // 2 + 50  # posição do horizonte
         spacing = 60  # distância entre linhas
 
         # 🎨 Gradiente de fundo (roxo -> azul escuro)
@@ -56,11 +56,12 @@ class VaporwaveGrid(QWidget):
         painter.setPen(QPen(QColor("#1eff00"), 1.5))
         num_lines = 70
         for i in range(-num_lines // 2, num_lines // 2 + 1):
-            x_bottom = int(width // 2 + i * 150)
-            x_top = int(width // 2 + i * 20)
+            x_bottom = int(width // 2 + i * 400)
+            x_top = int(width // 2 + i * 30)
             painter.drawLine(x_bottom, height, x_top, horizon_y)
 
 app = QApplication(sys.argv)
 window = VaporwaveGrid()
 window.show()
 sys.exit(app.exec_())
+
